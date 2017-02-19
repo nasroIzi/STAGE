@@ -1,0 +1,55 @@
+10 02 2017
+
+#STAGE
+
+Aujourd'hui, j'ai eu une réunion par rapport à mon projet et au final quels types de technologies j'aimerais utilisés plutôt XAMARIN ou IONIC 2 , je n'avais pas vraiment de préférence.  Après réflexion, nous avons décidés de choisir Ionic 2 car l'application que je devrais développer devrait être plus utile à l'entreprise du fait que leur site web sont en Angular JS 2 et que ces deux technologies sont compatibles et aussi car Angular JS est un des meilleurs frameworks JS.
+Après ça, nous avons plus en détails de l'application , à quel public est-elle destinées ? , question techniques ...
+
+
+
+#Ionic 2
+
+UTILE
+------
+
+import { AlertController } from 'ionic-angular';
+
+export class MyPage {
+  constructor(public alertCtrl: AlertController) {
+  }
+
+  showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Call this person?',
+      message: 'Confirmation de l'appel ?',
+      buttons: [
+        {
+          text: 'Non',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            console.log('Confirm clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+}
+
+
+<ion-icon name="call"></ion-icon>
+<ion-icon name="person"></ion-icon>
+<ion-icon name="phone-portrait"></ion-icon>
+
+<ion-avatar item-left>
+      <img src="img/avatar-cher.png">
+    </ion-avatar>
+--------------------------------------------------
+
+https://openclassrooms.com/courses/developpez-une-application-mobile-multi-plateforme-avec-ionic/installer-et-configurer-son-environnement
+https://www.redfroggy.fr/tags/ionic-2/

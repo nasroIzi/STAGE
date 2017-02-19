@@ -1,0 +1,20 @@
+Mecredi, je commence enfin la formation sur Ionic 2. Par ailleurs, il y a un léger changement dans mon planning normalement après avoir terminé cette formation, j'aurais du commencer à "coder mais je devrais me renseigner sur SignalR qui est une technologie afin de permettre d'envoyer des donnés  depuis un serveur à un client de manière automatique et fréquemment. Cela confirme ce que je pensais, je devrais gérer la connexion au serveur et pleins d'autres choses que je ne maitrise pas encore mais bon tout éxperience est bonne à prendre.
+
+#IONIC 2
+
+Base
+-----
+
+Installation (cmd node.js -> npm install - g ionic)
+Creation de l'application avec npm start [app] [template] --v2 --ts
+On se place dans le dossier de l'application avec cd [nom app]
+On l'ouvre avec visual studio code en écrivant code .
+On tape ionic pour avoir la liste des commandes
+ionic serve pour tester notre app sur le navigateur
+ctrl + C pour stopper l'app.
+ionic platform add android
+ionic run android (s'il y a un smartphone connecté cela lancera l'application sur celui-ci sinon il lancera l'app sur l'émulateur)
+ionic upload pour utiliser ionicView si pas de cable USB
+ionic g page [nom page] pour générer le dossier d'une page avec 3 fichiers [html,ts,scss].
+
+

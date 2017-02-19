@@ -1,0 +1,17 @@
+Lundi, je vais commencé ma formation afin de pouvoir utiliser Angular 2 vu que c'est une sorte de pré-requis afin d'utiliser Ionic 2. J'ai fait la rencontre d'un nouveau stagiaire, il a été affecté à une autre section. Je me sens plus à l'aise que la semaine précédente, je discute de tout et n'importe quoi avec mes collègues. J'ai rencontré quelques problèmes mais j'ai réussi à les résoudre par moi-même jusque là.
+
+# ANGULAR 2
+
+Langage : TypeScript
+Editeur : Visual Studio Code
+balise html du selector à utiliser pour afficher le html.
+pipes permet de changer le format(symboles etc..)
+
+1 - Interpolation '{{}}'
+2 - Property bindings [src] = '...'
+3 - Event bindings (click) = 'méthode()'
+4 - 2 way bindings <input [(ngModel)] = 'params'
+	/!\ FormsModule à importer
+module ID permet de réduire la taille des ruls s'ils font partit du meme dossier
+
+

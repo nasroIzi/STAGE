@@ -1,0 +1,484 @@
+# Développement d'une app. mobile :
+	
+	* Cycle d'une app:
+
+	Inspiration (= idée), Design, Development, Stabilization (= phase de débug), Deployment(= nouvelles fonctionnalités,) and Maintenance.
+
+	* Choix d'idée pour une app:
+
+	Se renseigner si "notre application" existe déjà ! Si oui, se différencier.
+# IONIC 2
+	
+	* Test (Application vide)
+	
+	1 - Installation node.js.
+	2 - Ouverture du "node.js command" et on colle "npm install -g ionic cordova" pour installer Ionic CLI et Cordova.
+	3 - On crée notre première application Ionic "ionic start cutePuppyPics --v2".
+	4 - Pour lancer l'application "cd cutePuppyPics" ensuite "ionic serve".
+
+	* Tuto
+
+	1 - Créer une nouvelle application "ionic start MyIonic2Project tutorial --v2".
+		-> "start" pour créer l'appli ( ordre au CLI).
+		-> "MyIonic2Project" le nom de mon projet.
+		-> "tutorial" template de mon projet.
+			Il y a différents template à savoir (tabs /default layout : a simple 3 tab layout, sidemenu: a layout with a swipable menu on the side, blank: a bare starter with a single page, tutorial: a guided starter project).
+		-> "--v2" pour utiliser Ionic 2!
+	2 - Lancer l'application que l'on a crée "cd MyIonic2Project/" ensuite "ionic serve".
+		-> "cd MyIonic2Project/" pour se mettre dans le projet ?! A VERIFIER
+		-> "ionic serve" pour lancer l'appli sur mon navigateur.
+
+	* Infos diverses sur le fonctionnement de Ionic:
+
+	"src/index.html" is the main entry point for the app, though its purpose is to set up script and CSS includes and bootstrap, or start running, our app. We won’t spend much of our time in this file.
+	"<ion-app></ion-app>" ce qui se trouve dans un fichier html et ce qu'utilise Ionic.
+	"<script src="cordova.js"></script>" -> cordova.js will 404 during local development, as it gets injected into your project during Cordova’s build process.
+	"<script src="build/main.js"></script>" -> build/main.js is a concatenated file containing Ionic, Angular and your app’s JavaScript.
+	Ces deux scripts sont à mettre en bas de page html.
+	"src/app/app.module.ts" is the entry point for our app.
+
+	<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+	-> sert à désigner la page principale
+
+	Chaque page a son dossier où il y a 3 fichiers (1 html,1 scss, 1 ts), pas obligatoire !!
+
+
+# ANGULAR
+
+Les composants sont la base de la programmation sur ANGULAR 2!
+
+	* INPUTS
+	---------
+
+	<user-profile [user]="currentUser"></user-profile>
+
+	import { Component, Input } from '@angular/core';
+
+	@Component({
+	  selector: 'user-profile',
+	  template: '<div>{{user.name}}</div>'
+	})
+	export class UserProfile {
+	  @Input() user;
+	  constructor() {}
+	}
+
+	* OUTPUTS
+	----------
+
+	import { Component } from '@angular/core';
+
+	@Component({
+	  selector: 'user-profile',
+	  template: '<div>Hi, my name is {{user.name}}</div>'
+	})
+	export class UserProfile {
+	  constructor() {}
+	}
+
+	import Output and EventEmitter and create our new event 
+	--------------------------------------------------------
+
+	import { Component, Output, EventEmitter } from '@angular/core';
+
+	@Component({
+	  selector: 'user-profile',
+	  template: '<div>Hi, my name is {{user.name}}</div>'
+	})
+	export class UserProfile {
+	  @Output() userUpdated = new EventEmitter();
+
+	  constructor() {
+	    // Update user
+	    // ...
+	    this.userUpdated.emit(this.user);
+	  }
+	}
+
+	<user-profile (userUpdated)="handleUserUpdated($event)"></user-profile>
+
+	export class SettingsPage {
+	  constructor(){}
+
+	  handleUserUpdated(user) {
+	    // Handle the event
+	  }
+	}
+
+	* BOOTSTRAP
+	------------
+
+	/!\ A mettre dans le fichier principal
+
+	import { bootstrap } from '@angular/platform-browser-dynamic'; // tout en haut
+
+	bootstrap(MyApp) // tout en bas
+
+	* COMPONENT LIFECYCLE
+	----------------------
+
+	ngOnInit() {
+	    // Properties are resolved and things like
+	    // this.mapWindow and this.mapControls
+	    // had a chance to resolve from the
+	    // two child components <map-window> and <map-controls>
+	}
+  	ngOnDestroy() {
+		// Speak now or forever hold your peace
+	}
+	ngDoCheck() {
+    	// Custom change detection
+  	}
+  	ngOnChanges(changes) {
+	    // Called right after our bindings have been checked but only
+	    // if one of our bindings has changed.
+	    //
+	    // changes is an object of the format:
+	    // {
+	    //   'prop': PropertyUpdate
+	    // }
+  	}
+ 	 ngAfterContentInit() {
+    	// Component content has been initialized
+  	}
+ 	ngAfterContentChecked() {
+    	// Component content has been Checked
+ 	}
+  	ngAfterViewInit() {
+    	// Component views are initialized
+  	}
+  	ngAfterViewChecked() {
+    	// Component views have been checked
+ 	}
+
+	* RENDERING VALUE 
+	------------------
+
+	To render a value, we can use the standard "{{}}" syntax.
+
+	My name is {{name}}
+
+	* BINDING PROPERTIES 
+	---------------------
+
+	To resolve and bind a variable to a component, use the "[]" syntax.
+
+	<video-control [volume]="currentVolume"></video-control>
+
+	* HANDLING EVENTS 
+	------------------
+
+	To listen for an event on a component, we use the "()" syntax.
+
+	<my-component (click)="onClick($event)"></my-component>
+
+	* TWO-WAY DATA BINDING
+	-----------------------
+
+	To keep a binding up to date given user input and other events, use the "[()]" syntax.
+
+	<input [(ngModel)]="myName">
+
+	* THE ASTERISK
+	---------------
+
+	* indicates that this directive treats this component as a template and will not draw it as-is.
+
+	<my-component *ngFor="#item of items"></my-component>
+
+	* EVENT OBJECT 
+	---------------
+
+	To capture the event object, pass $event as a parameter.
+	
+
+    <button (click)="clicked($event)"></button>
+
+	@Component(...)
+	class MyComponent {
+		clicked(event) {
+		event.preventDefault();
+		}
+	}
+
+	* SIMPLE FORM (formulaire)
+
+	App Module:
+	-----------
+	import { BrowserModule } from '@angular/platform-browser';
+	import { NgModule } from '@angular/core';
+	// We need to import the ReactiveFormsModule and import it
+	import { ReactiveFormsModule } from '@angular/forms';
+	import { HttpModule } from '@angular/http';
+
+	import { AppComponent } from './app.component';
+
+	@NgModule({
+	  declarations: [
+	    AppComponent
+	  ],
+	  imports: [
+	    BrowserModule,
+	    ReactiveFormsModule,
+	    HttpModule
+	  ],
+	  providers: [],
+	  bootstrap: [AppComponent]
+	})
+	export class AppModule { }
+	
+	Template:
+	---------
+	<form [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
+	    <input formControlName="email" type="email" placeholder="Your email">
+	    <input formControlName="password" type="password" placeholder="Your password">
+		<button type="submit">Log in</button>
+	</form>
+
+	Component Class:
+	----------------
+	import { Component } from '@angular/core';
+	import { FormBuilder, Validators } from '@angular/forms';
+
+	@Component({
+	  selector: 'login-page',
+	  templateUrl: 'login-page.html'
+	})
+	export class LoginPage {
+	  public loginForm = this.fb.group({
+	    email: ["", Validators.required],
+	    password: ["", Validators.required]
+	  });
+	  constructor(public fb: FormBuilder) {}
+	  doLogin(event) {
+	    console.log(event);
+	    console.log(this.loginForm.value);
+	  }
+	}
+
+	* FORMBUILDER
+	--------------
+
+	public loginForm = this.fb.group({
+	  email: ['', Validators.required],
+	  password: ['', Validators.required],
+	});
+
+	* CONTROLGROUP
+	---------------
+
+	import { FormGroup, FormControl } from '@angular/forms';
+
+	...
+
+	public loginForm = new FormGroup({
+	  email: new FormControl("email", Validators.required),
+	  password: new FormControl("password", Validators.required)
+	});
+
+	* FORM DIRECTIVES
+	------------------
+
+	 <input formControlName="email" type="email" placeholder="Your email">
+
+	 * HANDLING FORM VALUES
+	------------------------
+
+	We can easily get the simple Typescript object value of our form, or the value of an individual control
+
+
+	doLogin(event) {
+	  // Show the value of the form
+	  let formData = this.loginForm.value;
+	  // { email: 'blah@blah.net', password: 'imnottelling1' }
+
+	  // Or, grab the value of one control:
+	  let email = this.loginForm.controls.email.value
+
+	}
+
+	* ES6 VARIABLES
+	----------------
+
+	In ES6, we have a new way of specifying variables: let.
+	This is perfect for loops and closures.
+
+	* ES6 CLASSES
+	--------------
+
+	ES6 Classes will feel very natural for those with experience writing Object-Oriented code in languages like Java and C#.
+
+	class Beer {
+	  sell(location) {
+	  }
+	}
+
+	class SpottedCow extends Beer {
+	  constructor() {
+	    super();
+	    this.deliciousness = 50;
+	    this.locations = 'Wisconsin';
+	    this.name = 'Spotted Cow';
+	  }
+	  sell(location) {
+	    if(location !== 'Wisconsin') {
+	      throw new JailTimeError();
+	    }
+	  }
+	}
+
+	class MillerLite extends Beer {
+	  constructor() {
+	    super();
+	    this.deliciousness = 10;
+	    this.locations = 'anywhere';
+	    this.name = 'Miller Lite';
+	  }
+	  sell(location) {
+	    if(Location.hasSportsTeam(location)) {
+	      return true;
+	    }
+	    // Enh, we'll sell anywhere
+	    return true;
+	  }
+	}
+
+	let beer = new SpottedCow();
+
+	console.log('I am drinking a delicious ', beer.name, ' that is available ', beer.locations);
+
+	beer.sell();
+
+	* ES6 TEMPLATE STRINGS
+	-----------------------
+
+	ES6 adds the ability to write long inline strings without having to use concatenation or other odd tricks.
+
+	let template = `
+	  <div>
+	    <h2>Rufferford's Travels</h2>
+	    <p>
+	      A most gripping tale of one dog's quest
+	      for more flavors.
+	    </p>
+	  </div>
+	`;
+
+	* ARROW FUNCTIONS
+	------------------
+
+	class MyClass {
+	  constructor() {
+	    this.name = 'Max';
+
+	    setTimeout(() => {
+	      // This prints "Max" since arrow functions bind to our current "this" context.
+	      console.log(this.name);
+	    });
+	  }
+	}
+
+	* PROMISES
+	-----------
+
+	Promises make it easier to write asynchronous code compared to using callbacks, and many libraries and Web APIs return promises for async operations, like fetch():
+
+	loadUsers() {
+	  fetch('/api/users').then((response) => {
+	    return response.json();
+	  }).then((data) => {
+	    this.users = data;
+	  }).catch((ex) => {
+	    console.error('Error fetching users', ex);
+	  });
+	}
+
+	/!\  http://www.datchley.name/promise-patterns-anti-patterns/
+
+UTILE
+------
+
+import { AlertController } from 'ionic-angular';
+
+export class MyPage {
+  constructor(public alertCtrl: AlertController) {
+  }
+
+  showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Call this person?',
+      message: 'Confirmation de l'appel ?',
+      buttons: [
+        {
+          text: 'Non',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            console.log('Confirm clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+}
+
+
+<ion-icon name="call"></ion-icon>
+<ion-icon name="person"></ion-icon>
+<ion-icon name="phone-portrait"></ion-icon>
+
+<ion-avatar item-left>
+      <img src="img/avatar-cher.png">
+    </ion-avatar>
+--------------------------------------------------
+
+https://openclassrooms.com/courses/developpez-une-application-mobile-multi-plateforme-avec-ionic/installer-et-configurer-son-environnement
+https://www.redfroggy.fr/tags/ionic-2/
+
+Langage : TypeScript
+Editeur : Visual Studio Code
+balise html du selector à utiliser pour afficher le html.
+pipes permet de changer le format(symboles etc..)
+
+1 - Interpolation '{{}}'
+2 - Property bindings [src] = '...'
+3 - Event bindings (click) = 'méthode()'
+4 - 2 way bindings <input [(ngModel)] = 'params'
+	/!\ FormsModule à importer
+module ID permet de réduire la taille des ruls s'ils font partit du meme dossier
+
+npm start pour lancer l'application
+@input() permet de faire une valeur
+@output() permet de répondre à une action faite par l'utilisateur grâce à EvenEmitter
+
+Les services doivent être crée dans un ficher à part et doivent être signaler dans le app.component.ts dans provider[].
+On injecte un service grâce au constructeur dans la partie voulue. Pour tout ce qui est des données, ils sont à mettre dans la méthode OnInit().
+
+Pour les requêtes http, on import HttpModyle dans app.module.
+Ne pas oublier de gérer les erreurs lors d'une requête HTPP avec catch et handleError. Transformer le résultat de la requête avec .map(à importer aussi). Utiliser do pour afficher ce qu'il ya dans le fichier JSON. Et on met ca dans ngOnInit.
+
+Il faut importer RouterModule in app.module ensuite rajoute chaque route au tableau "forRoot" avec path (nom de la page, '' pour la page de défaut, '**' qui remplace le 404 not found). Attention à l'ordre. A rajouter dans le index html <base href="/">.
+
+RouterService à importer car il permet la navigation entre les différentes vues. On peut passer un paramètre grâce au path "/:params". Guards permettent l'accès qu'à certaine personnes l'accès à es endroits du site.*ngIf à utiliser si la page peut charger avant les éléments et donc faire attendre l'affichage. 
+
+Base
+-----
+
+Installation (cmd node.js -> npm install - g ionic)
+Creation de l'application avec npm start [app] [template] --v2 --ts
+On se place dans le dossier de l'application avec cd [nom app]
+On l'ouvre avec visual studio code en écrivant code .
+On tape ionic pour avoir la liste des commandes
+ionic serve pour tester notre app sur le navigateur
+ctrl + C pour stopper l'app.
+ionic platform add android
+ionic run android (s'il y a un smartphone connecté cela lancera l'application sur celui-ci sinon il lancera l'app sur l'émulateur)
+ionic upload pour utiliser ionicView si pas de cable USB
+ionic g page [nom page] pour générer le dossier d'une page avec 3 fichiers [html,ts,scss].
+
+

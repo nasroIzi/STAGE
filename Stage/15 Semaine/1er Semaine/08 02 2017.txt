@@ -1,0 +1,73 @@
+# Stage 08/02/2017 :
+
+
+Arrivé au lieu de stage, je revois mon  et je fais la rencontre de deux autres stagiaires qui viennent de l'Inraci. On m'explique que je dois apprendre un nouveau outil qui est Xamarin.
+Ensuite mon "employeur" m'a donc confié une tache et il est partit car il avait des choses à régler puis le personnel de l'entreprise arriva, je fus la connaissance de deux nouvelles personnes.
+J'ai eu quelques problèmes quant à l'utilisation de l'outil car des soucis de clés d'activations et donc j'ai demandé de laider à un des employés qui m'a conseilél de télécharger la derniere version de visual studio qui ne nécessite pas de clé d'activation. L'un des employés m'a proposé de prendre une tasse de café d'ailleurs j'en avais bien besoin. Et j'ai rencontré d'autres employés qui eux étaient plus du coté serveur, administation ... Le temps de midi, j'ai appris à mieux connaître les deux autres stagiaires, on a mangé ensemble d'ailleurs. J'ai parlé de mon parcours avec l'un des employés qui est vraiment sympathique et j'ai rencontré d'autres personnes de l'entreprise. Le seul soucis jusqu'à maintenant c'est le PC qu'on m'a donné!!! Il est beaucoups trop lent, il m'a fait perdre énormément de temps, j'hésite à en acheter un pour dire...
+
+
+
+# Infos concernant Xamarin :
+
+C'est un outil qui permet de développer nativement en C# sur 3 plateformes différentes à savoir iOS & Android & Windows Phone => XAMARIN.
+Une couche commune “Core” séparée en plusieurs couches (layers) classiques. Elle composée de la Data Layer, Data Access Layer, Service Access Layer et de la Business Layer. Elle utilise les librairies communes aux 3 plates-formes; Pour chaque plateforme, une couche “App Layer” (code spécifique à la plate-forme) et une couche “User Interface”. Obligation de compiler sur un Mac afin d'avoir une application iOs.
+
+# Développement d'une app. mobile :
+	
+	* Cycle d'une app:
+
+	Inspiration (= idée), Design, Development, Stabilization (= phase de débug), Deployment(= nouvelles fonctionnalités,) and Maintenance.
+
+	* Choix d'idée pour une app:
+
+	Se renseigner si "notre application" existe déjà ! Si oui, se différencier.
+
+	* AlertDialog:
+
+	var callDialog = new AlertDialog.Builder(this);
+	callDialog.SetMessage("Call " + translatedNumber + "?");
+	callDialog.SetNeutralButton("Call",
+	       delegate
+	       {
+	           // Create intent to dial phone
+	       });
+	callDialog.SetNegativeButton("Cancel", delegate {});
+
+	// Show the alert dialog to the user and wait for response.
+	callDialog.Show();
+
+	* Intent:
+
+	var callIntent = new Intent(Intent.ActionCall);
+	callIntent.SetData(Android.Net.Uri.Parse("tel:" + translatedNumber));
+	StartActivity(callIntent);
+
+	* Liens pour trouver des icones toutes faites :
+
+	Android Asset Studio
+
+# Liens utiles : 
+
+https://developer.xamarin.com/?cs=1
+
+	* Config 
+
+	https://developer.xamarin.com/guides/android/getting_started/hello,android/hello,android_quickstart/
+
+	* Théorique
+
+	https://mva.microsoft.com/fr-fr/training-courses/d-velopper-une-application-cross-plateformes-avec-xamarin-14270
+
+	* Pratique
+
+	http://blog.palo-it.com/2014/04/29/tutoriel-developper-nativement-pour-ios-et-android-en-c-net-avec-xamarin-partie-1/
+
+	http://blog.palo-it.com/2014/05/05/tutoriel-developper-nativement-pour-ios-et-android-en-c-net-avec-xamarin-partie-2/
+	
+	https://developer.xamarin.com/guides/cross-platform/getting_started/
+
+	https://developer.xamarin.com/guides/android/getting_started/hello,android/
+
+	https://developer.xamarin.com/guides/ios/getting_started/hello,_iOS/
+
+	https://developer.xamarin.com/guides/cross-platform/getting_started/introduction_to_mobile_sdlc/

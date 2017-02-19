@@ -1,0 +1,23 @@
+Mardi, je reprends là où je m'étais arreté hier. Quelques heures plus tard, j'ai enfin finis la formation Angular 2. Les deux autres stagiaires ont un entretien avec le maitre de stage car ils se sentent un peu perdu car ils trouvent qu'il y a trop de part d'ombre dans leur projet. 
+Pendant ce temps-là, je prends une petite pause café et j'en profite pour parler avec un collègue qui lui est plutôt axés programmation serveur (C#). Je lui demande comment est-ce que ça fonctionne car je pense que ce sera moi qui devrait gérer la connection au serveur. Ils ont finit leur entretien et ils me disent que c'est à mon tour, je fais le point par rapport à mon avancement mais il n'y a pas vraiment de nouveautés vu que je viens à peine de finir la formation sur ANGULAR 2 mais qui je le rappelle n'est pas ce que je vais utilisé pour développer mon application mobile.
+J'en ai profité pour lui poser plusieurs questions que j'avais écrit sur une feuille chez moi afin de mieux comprendre le fonctionnement de l'application.
+
+# ANGULAR 2
+------------
+
+npm start pour lancer l'application
+@input() permet de faire une valeur
+@output() permet de répondre à une action faite par l'utilisateur grâce à EvenEmitter
+
+Les services doivent être crée dans un ficher à part et doivent être signaler dans le app.component.ts dans provider[].
+On injecte un service grâce au constructeur dans la partie voulue. Pour tout ce qui est des données, ils sont à mettre dans la méthode OnInit().
+
+Pour les requêtes http, on import HttpModyle dans app.module.
+Ne pas oublier de gérer les erreurs lors d'une requête HTPP avec catch et handleError. Transformer le résultat de la requête avec .map(à importer aussi). Utiliser do pour afficher ce qu'il ya dans le fichier JSON. Et on met ca dans ngOnInit.
+
+Il faut importer RouterModule in app.module ensuite rajoute chaque route au tableau "forRoot" avec path (nom de la page, '' pour la page de défaut, '**' qui remplace le 404 not found). Attention à l'ordre. A rajouter dans le index html <base href="/">.
+
+RouterService à importer car il permet la navigation entre les différentes vues. On peut passer un paramètre grâce au path "/:params". Guards permettent l'accès qu'à certaine personnes l'accès à es endroits du site.*ngIf à utiliser si la page peut charger avant les éléments et donc faire attendre l'affichage. 	
+
+
+
