@@ -1,9 +1,9 @@
 
-<ion-header class="bar bar-header bar-assertive">
+<ion-header>
 
   <ion-navbar color="primary" >  
     <button ion-button menuToggle>
-      <ion-icon name="toggle"></ion-icon>
+      <ion-icon name="menu"></ion-icon>
     </button>
     
     <ion-title> AddVals  </ion-title>
@@ -18,9 +18,10 @@
   <ion-toolbar> 
     <ion-item>
       <ion-label><ion-title>Filtrer :</ion-title></ion-label>
-      <ion-select [(ngModel)]="gender">
-        <ion-option value="f" selected="true">Lieu</ion-option>
-        <ion-option value="m">Type</ion-option>
+      <ion-select [(ngModel)]="filtre">
+        <ion-option value="lieu" selected="true">Lieu</ion-option>
+        <ion-option value="type">Type</ion-option>
+        <ion-option value="adresse">Adresse</ion-option>
       </ion-select>
     </ion-item> 
   </ion-toolbar>
