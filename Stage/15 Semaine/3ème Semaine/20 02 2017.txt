@@ -1,0 +1,10 @@
+J'ai fait la rencontre d'un stagiaire qui était déjà présent, il y a deux semaines mais bizzarement depuis que je suis arrivé , il n'était pas revenu jusqu'à aujourd'hui ensuite j'ai fais des recherches sur SignalR pour que lorsque j'aurais mon entretien avec le maitre d stage, j'y verrais un peu plus clair. Juste avant la pause du midi, je décide d'alle lui parler surtout de ce qu'il entends par architecture pour m'éclairer.
+Il décde de me schématiser les grandes lignes sur un tableau et m'aiguille sur les recherches que je dois faire comme par exemple la nécessité base de donnée interne à l'application pour garder des données importantes si on est plus de réseau/internet. 
+
+@@@@@@ Conseils sur l'utilisation d'une base de donnée interne
+
+*	Ne stockez que le strict minimum dont vous avez besoin pour votre application, au risque de prendre trop d'espace disque; En conséquences, 	l'application pourrait ne plus être fonctionnelle si l'espace venait à manquer, et l'utilisateur pourrait s'en désintéresser.
+
+*	Dans le cas d'une synchronisation avec une BDD externe, essayez d'avoir un maximum de cohérence au niveau de vos modèles de données, pour 	limiter le traitement effectué par le Middleware ou par l'application.
+
+*	Toujours dans le cas d'une synchronisation: effectuer celle-ci uniquement quand vous en avez besoin, en synchronisant le minimum possible de données, de sorte à optimiser le temps de transfert des données.
