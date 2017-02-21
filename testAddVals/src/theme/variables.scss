@@ -7,7 +7,7 @@ $font-path: "../assets/fonts";
 // --------------------------------------------------
 
 $colors: (
-  primary:    #387ef5,
+  primary:    #303030,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -16,8 +16,6 @@ $colors: (
   myblack:    #000000
 
 );
-
-
 
 @import "ionic.theme.default";
 
