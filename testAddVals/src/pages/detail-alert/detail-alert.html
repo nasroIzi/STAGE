@@ -1,47 +1,27 @@
+<!-- à laisser en suspens pour l'instant !-->
 
-<ion-header>
-
-  <ion-navbar color="primary">
-    <ion-title>Détails Alertes</ion-title>
+<ion-header>  
+  <ion-navbar>
+    <ion-title>{{ action }} Alarme</ion-title>
+    <ion-buttons end *ngIf="!isNew">
+      <button ion-button (click)="delete()">
+          <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content>
-  <ion-card>
-    <ion-card-content>
-
-      <ion-card-title>
-        <ion-grid>  
-         <ion-row> 
-           <ion-col width-100 text-center>
-              <ion-icon name="clipboard"> Alarmes </ion-icon>
-           </ion-col>     
-         </ion-row>
-        </ion-grid>    
-      </ion-card-title>
-
-        <ion-list>
-          <ion-grid>
-            <button (click)="goToAlert()" ion-item *ngFor="let item of alerts">
-              <ion-row flex-wrap: wrap>
-                
-                  <ion-col width-30>
-                      <ion-icon name="time"></ion-icon>            
-                      {{item.heure}} 
-                  </ion-col>
-                  <ion-col width-40>
-                      {{item.nom}}
-                  </ion-col>
-                  <ion-col width-30> 
-                      {{item.lieu}}
-                  </ion-col> 
-              </ion-row>
-            </button>
-          </ion-grid>  
-        </ion-list>
-
-          </ion-card-content>       
-  </ion-card>
-</ion-content>
+<ion-content padding>  
+    <ion-list>
+        <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input text-right type="text" [(ngModel)]="alarme.Name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Birthday</ion-label>
+            <ion-datetime displayFormat="MMMM D, YYYY" pickerFormat="MMMM D YYYY" [(ngModel)]="isoDate"></ion-datetime>
+        </ion-item>
+    </ion-list>
+    <button ion-button block (click)="save()">Save</button>
+</ion-content> 

@@ -3,14 +3,22 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
+import { ConnexionPage } from '../pages/connexion/connexion';
+import { InscriptionPage } from '../pages/inscription/inscription';
+import { AlarmePage } from '../pages/alarmes/alarmes';
 import { FormAlertPage } from '../pages/form-alert/form-alert';
-import { DetailAlertPage } from "../pages/detail-alert/detail-alert";
+import { DetailAlertPage } from '../pages/detail-alert/detail-alert';
 import { ManualAlertPage } from '../pages/manual-alert/manual-alert';
+
+import { AlarmeService } from '../services/alarmes.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    InscriptionPage,
+    ConnexionPage,
+    AlarmePage,
     FormAlertPage,
     DetailAlertPage,
     ManualAlertPage
@@ -22,10 +30,13 @@ import { ManualAlertPage } from '../pages/manual-alert/manual-alert';
   entryComponents: [
     MyApp,
     HomePage,
+    InscriptionPage,
+    ConnexionPage,
+    AlarmePage,
     FormAlertPage,
     DetailAlertPage,
     ManualAlertPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AlarmeService]
 })
 export class AppModule {}

@@ -1,0 +1,70 @@
+<ion-header>
+
+  <ion-navbar color="primary" >  
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    
+    <ion-title> AddVals  </ion-title>
+  </ion-navbar>
+
+  <ion-buttons>
+      <button (click)="goToAlertManual()" color="danger" ion-button full>
+                <ion-icon name="warning"> SOS </ion-icon>   
+      </button>
+  </ion-buttons>
+
+  <ion-toolbar> 
+    <ion-item>
+      <ion-label><ion-title>Filtrer :</ion-title></ion-label>
+      <ion-select [(ngModel)]="filtre">
+        <ion-option value="lieu" selected="true">Lieu</ion-option>
+        <ion-option value="type">Type</ion-option>
+        <ion-option value="adresse">Adresse</ion-option>
+      </ion-select>
+    </ion-item> 
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+
+      <ion-card-title>
+        <ion-grid>  
+         <ion-row> 
+           <ion-col width-100 text-center>
+              <ion-icon name="clipboard"> Alarmes </ion-icon>
+           </ion-col>     
+         </ion-row>
+        </ion-grid>    
+      </ion-card-title>
+
+        <ion-list>
+          <ion-grid>
+            <button ion-item *ngFor="let alarme of alarmes" (click)="showDetail(alarme)">
+              <ion-row flex-wrap: wrap>
+                
+                  <ion-col width-30>
+                      <ion-icon name="time"></ion-icon>            
+                      {{alarme.Name}} 
+                  </ion-col>
+                  <ion-col width-40>
+                      {{alarme.Date | date:'yMMMD'}}
+                  </ion-col>
+                  <!--<ion-col width-30> 
+                      {{item.lieu}}
+                  </ion-col> -->
+              </ion-row>
+            </button>
+          </ion-grid>  
+        </ion-list>
+
+          </ion-card-content>       
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="goToFormAlert()" color="primary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,5 @@
+On installe SQL Lite Plugin 2 => ionic plugin add cordova-plugin-sqlite-2
+On installe PouchDB => npm install pouchdb --save
+On crée la DB + des méthodes d'insertion, de suppression etc ...
+On oublie de l'importer dans app.module.ts et de la signaler dans providers.
+
