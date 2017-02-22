@@ -7,15 +7,17 @@ $font-path: "../assets/fonts";
 // --------------------------------------------------
 
 $colors: (
+<<<<<<< HEAD
+  primary:    #303030,
+=======
   primary:    #B22E29,
+>>>>>>> origin/master
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #252525,
   bleu:       #387EF5
 );
-
-
 
 @import "ionic.theme.default";
 
