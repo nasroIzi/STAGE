@@ -1,20 +1,26 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title> AddVals </ion-title>
+    <ion-title text-center> AddVals </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-<p class="presentation"> 
-    This results in the background image being zoomed on, with large parts missing on sides, top and bottom.
-    Is it a bug ? Can ionic scale the image automatically so that the full width of the image is displayed (or full heigth) ?
-    This results in the background image being zoomed on, with large parts missing on sides, top and bottom.
-    Is it a bug ? Can ionic scale the image automatically so that the full width of the image is displayed (or full heigth) ?
-</p>
-<div class="moyen">
-  <button ion-button (click)="goToAuthentification()" block> Se connecter </button>
-  <button ion-button (click)="goToAuthentification()" block> S'inscrire </button>
-</div>
+<ion-content padding class="home-background">
+  <p color="light"> 
+      This results in the background image being zoomed on, with large parts missing on sides, top and bottom.
+      Is it a bug ? Can ionic scale the image automatically so that the full width of the image is displayed (or full heigth) ?
+      This results in the background image being zoomed on, with large parts missing on sides, top and bottom.
+      Is it a bug ? Can ionic scale the image automatically so that the full width of the image is displayed (or full heigth) ?
+  </p>
+  <div>
+    <button ion-button icon-left color="bleu" (click)="goToLogIn()" block> 
+      <ion-icon name ="log-in"></ion-icon>
+      Se connecter 
+    </button>
+    <button ion-button icon-left color="secondary" (click)="goToSignIn()" block>
+      <ion-icon name ="create"></ion-icon>
+      S'inscrire  
+    </button>
+  </div>
 </ion-content>
 
